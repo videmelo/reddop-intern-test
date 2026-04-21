@@ -1,0 +1,22 @@
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# Angular
+/.angular
+/coverage
+
+# IDEs
+.idea/
+.vscode/
+!.vscode/extensions.json
+
+# System
+.DS_Store
+Thumbs.db

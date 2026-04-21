@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-12" *ngIf="error">
+    <div class="alert alert-danger">{{ error }}</div>
+  </div>
+  <div class="col-12" *ngIf="success">
+    <div class="alert alert-success">{{ success }}</div>
+  </div>
+
+  <div class="col-lg-6 mb-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-header bg-white d-flex justify-content-between align-items-center border-bottom-0 pb-0 pt-3">
+        <h5 class="mb-0 fw-bold">Produtos</h5>
+        <button class="btn btn-sm btn-outline-primary" (click)="loadProducts()">Atualizar</button>
+      </div>
+      <div class="card-body">
+        <div *ngIf="loadingProducts" class="text-center p-3">
+          <div class="spinner-border text-primary" role="status"></div>
+        </div>
+
+        <div class="table-responsive" *ngIf="!loadingProducts">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of products">
+                <td>{{p.name}}</td>
+                <td>{{p.price | currency:'BRL'}}</td>
+                <td><span class="badge bg-secondary">{{p.categoryName}}</span></td>
+              </tr>
+              <tr *ngIf="products.length === 0">
+                <td colspan="4" class="text-center text-muted">Nenhum produto cadastrado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6 mb-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-header bg-white d-flex justify-content-between align-items-center border-bottom-0 pb-0 pt-3">
+        <h5 class="mb-0 fw-bold">Categorias</h5>
+        <button class="btn btn-sm btn-outline-primary" (click)="loadCategories()">Atualizar</button>
+      </div>
+      <div class="card-body">
+        <div *ngIf="loadingCategories" class="text-center p-3">
+          <div class="spinner-border text-primary" role="status"></div>
+        </div>
+
+        <div class="table-responsive" *ngIf="!loadingCategories">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th class="text-end">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of categories">
+                <td>{{c.name}}</td>
+                <td class="text-end">
+                  <button class="btn btn-outline-danger btn-sm" (click)="deleteCategory(c.id)">
+                    Apagar
+                  </button>
+                </td>
+              </tr>
+              <tr *ngIf="categories.length === 0">
+                <td colspan="2" class="text-center text-muted">Nenhuma categoria cadastrada.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

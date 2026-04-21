@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="/reddop-logo.avif" alt="Reddop" height="30" class="d-inline-block align-top">
+    </a>
+  </div>
+</nav>
+
+<div class="container mt-4 mb-5">
+  <div class="row g-4 align-items-stretch">
+    <!-- Formulários lado a lado em telas grandes -->
+    <div class="col-lg-6">
+      <app-category-form class="d-block h-100"></app-category-form>
+    </div>
+    <div class="col-lg-6">
+      <app-product-form class="d-block h-100"></app-product-form>
+    </div>
+  </div>
+  
+  <div class="row mt-4">
+    <!-- Dashboard no container completo para exibir listas -->
+    <div class="col-12">
+      <app-dashboard class="d-block"></app-dashboard>
+    </div>
+  </div>
+</div>

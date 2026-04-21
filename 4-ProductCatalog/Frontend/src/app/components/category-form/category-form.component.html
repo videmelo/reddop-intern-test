@@ -1,0 +1,34 @@
+<div class="card shadow-sm border-0 h-100 d-flex flex-column">
+  <div class="card-header bg-white">
+    <h4 class="mb-0">Nova Categoria</h4>
+  </div>
+  <div class="card-body d-flex flex-column">
+    
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="d-flex flex-column flex-grow-1">
+      
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome da Categoria</label>
+        <input type="text" 
+               id="name" 
+               class="form-control" 
+               formControlName="name" 
+               [ngClass]="{'is-invalid': categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched}"
+               placeholder="Ex: Eletrônicos">
+        <div class="invalid-feedback">O nome é obrigatório e deve ter no mínimo 3 caracteres.</div>
+      </div>
+
+      <div class="d-flex justify-content-end mt-auto pt-4">
+        <button type="submit" class="btn btn-primary" [disabled]="categoryForm.invalid || isSubmitting">
+          <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+          Salvar Categoria
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
